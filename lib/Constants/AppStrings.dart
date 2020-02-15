@@ -26,4 +26,6 @@ class AppStrings {
   static String select_baby_name_by_letter = "Select baby name by letter.";
 
   static var search = "Search";
+
+  static String copied_to_clipboard = "Copied to Clipboard";
 }

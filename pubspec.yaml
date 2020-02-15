@@ -25,6 +25,12 @@ dependencies:
   cupertino_icons: ^0.1.2
   sqflite: ^1.2.0
   path_provider: 1.6.0
+  # Text to Speak
+  tts: 1.0.2
+  #showing toast
+  toast: 0.1.5
+  #sharing intent picker
+  share: 0.6.3+5
 
 dev_dependencies:
   flutter_test:

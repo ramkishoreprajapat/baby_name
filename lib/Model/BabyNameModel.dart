@@ -1,11 +1,10 @@
 class BabyNameModel {
-  final int babyid;
-  final String babygender;
-  final String babyname;
-  final String meaning;
-  final int religionId;
+  final babyid;
+  final babygender;
+  final babyname;
+  final meaning;
+  final religionId;
 
-  BabyNameModel(this.babyid, this.babygender, this.babyname, this.meaning, this.religionId);
-
-
+    BabyNameModel(
+      {this.babyid, this.babygender, this.babyname, this.meaning, this.religionId});
 }
