@@ -24,4 +24,6 @@ class AppStrings {
   static String muslim = "Muslim";
 
   static String select_baby_name_by_letter = "Select baby name by letter.";
+
+  static var search = "Search";
 }

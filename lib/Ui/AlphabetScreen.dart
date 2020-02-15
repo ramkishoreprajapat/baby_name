@@ -2,11 +2,15 @@ import 'package:baby_name/Constants/AppColors.dart';
 import 'package:baby_name/Constants/AppFonts.dart';
 import 'package:baby_name/Constants/AppStrings.dart';
 import 'package:baby_name/Model/AlphabetModel.dart';
+import 'package:baby_name/Ui/NameListScreen.dart';
 import 'package:baby_name/Utils/Utility.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AlphabetScreen extends StatefulWidget {
+  final String genderType;
+  final int categoryType;
+  AlphabetScreen({Key key, @required this.genderType, @required this.categoryType}) : super(key: key);
   @override
   _AlphabetScreenState createState() => _AlphabetScreenState();
 }
@@ -26,6 +30,8 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print("Gender Type : "+widget.genderType);
+    print(" Category : "+widget.categoryType.toString());
     return Material(
       child: Container(
         decoration: BoxDecoration(
@@ -62,10 +68,22 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
                   height: 100.0,
                   child: new Container(
                     child: RaisedButton(
+                      color: AppColors.colorOrangeTransparent,
                       shape: RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(10)),
                       padding: EdgeInsets.all(8.0),
-                      onPressed: null,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => NameListScreen(
+                              genderType: widget.genderType,
+                              categoryType: widget.categoryType,
+                              characterType: mList[i].text,
+                            ),
+                          ),
+                        );
+                      },
                       child: Text(
                         mList[i].text,
                         style: TextStyle(

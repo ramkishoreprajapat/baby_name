@@ -9,6 +9,6 @@ class AppColors {
   static Color colorGradientEnd = Color(0xff6338A1);
   static Color colorYellow = Color(0xfffbcd58);
   static Color colorOrange = Color(0xffc69cae);
-
+  static Color colorOrangeTransparent = Color(0xff70c69cae);
   static Color colorBlack = Color(0xff000000);
 }

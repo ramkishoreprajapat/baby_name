@@ -1,6 +1,7 @@
 import 'package:baby_name/Ui/AlphabetScreen.dart';
 import 'package:baby_name/Ui/CategoryScreen.dart';
 import 'package:baby_name/Ui/Dashboard.dart';
+import 'package:baby_name/Ui/NameListScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: AlphabetScreen(),
+      home: Dashboard(),
     );
   }
 }
