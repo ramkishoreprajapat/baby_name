@@ -12,7 +12,7 @@ class DatabaseHelper{
 
   static final table = 'babynamestable';
 
-  static final columnId = '_id';
+  static final columnId = 'babyid';
   static final columnName = 'name';
   static final columnAge = 'age';
 
@@ -83,9 +83,13 @@ class DatabaseHelper{
   // All of the rows are returned as a list of maps, where each map is
   // a key-value list of columns.
   Future<List<Map<String, dynamic>>> queryParticularRows(genderType, categoryType, characterType) async {
-    List<BabyNameModel> babyList = new List();
     Database db = await instance.database;
     return await db.rawQuery("SELECT * FROM $table where babygender = ? and religionid = ? and babyname LIKE ?", [genderType, categoryType, characterType+'%']);
+  }
+    //get fav baby name
+  Future<List<Map<String, dynamic>>> queryFavRows() async {
+    Database db = await instance.database;
+    return await db.rawQuery("SELECT * FROM $table where isfav = ?", [1]);
   }
 
   // All of the methods (insert, query, update, delete) can also be done using
@@ -101,6 +105,14 @@ class DatabaseHelper{
     Database db = await instance.database;
     int id = row[columnId];
     return await db.update(table, row, where: '$columnId = ?', whereArgs: [id]);
+  }
+
+  Future<int> updateFav(babyId, isfav) async {
+    Database db = await instance.database;
+    int count = await db.rawUpdate(
+        'UPDATE $table SET isfav = ? WHERE babyid = ?',
+        [isfav, babyId]);
+    print('updated: $count');
   }
 
   // Deletes the row specified by the id. The number of affected rows is

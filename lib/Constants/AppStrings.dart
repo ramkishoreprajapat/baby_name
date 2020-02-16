@@ -28,4 +28,8 @@ class AppStrings {
   static var search = "Search";
 
   static String copied_to_clipboard = "Copied to Clipboard";
+
+  static String not_added_favorite_yet = "Not added favorite yet.";
+
+  /*ca-app-pub-7524933595530752~9345165848*/
 }

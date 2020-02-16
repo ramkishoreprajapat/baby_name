@@ -2,14 +2,47 @@ import 'package:baby_name/Ui/AlphabetScreen.dart';
 import 'package:baby_name/Ui/CategoryScreen.dart';
 import 'package:baby_name/Ui/Dashboard.dart';
 import 'package:baby_name/Ui/NameListScreen.dart';
+import 'package:baby_name/Utils/Utility.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_admob/firebase_admob.dart';
 
 void main() => runApp(MyApp());
+// You can also test with your own ad unit IDs by registering your device as a
+// test device. Check the logs for your device's ID value.
+const String testDevice = 'YOUR_DEVICE_ID';
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  BannerAd _bannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    _bannerAd = Utility.createBannerAd()..load();
+
+  }
+
+  @override
+  void dispose() {
+    _bannerAd?.dispose();
+    super.dispose();
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    _bannerAd ??= Utility.createBannerAd();
+    _bannerAd
+      ..load()
+      ..show();
+
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',

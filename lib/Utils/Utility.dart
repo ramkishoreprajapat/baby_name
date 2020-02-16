@@ -1,6 +1,16 @@
 import 'package:baby_name/Model/AlphabetModel.dart';
+import 'package:baby_name/main.dart';
+import 'package:firebase_admob/firebase_admob.dart';
 
 class Utility{
+  static const MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+    testDevices: testDevice != null ? <String>[testDevice] : null,
+    keywords: <String>['games', 'pubg', 'games', 'cod', 'video', 'baby name', 'camera', 'mp3'],
+    contentUrl: 'http://foo.com/bar.html',
+    childDirected: true,
+    nonPersonalizedAds: true,
+  );
+
  static List<AlphabetModel> getAlphabets() {
 
 
@@ -35,4 +45,34 @@ class Utility{
 
     return alphabets;
   }
+
+ static BannerAd createBannerAd() {
+    return BannerAd(
+      adUnitId: BannerAd.testAdUnitId,
+      size: AdSize.banner,
+      targetingInfo: Utility.targetingInfo,
+      listener: (MobileAdEvent event) {
+        print("BannerAd event $event");
+      },
+    );
+  }
+
+
+  static InterstitialAd createInterstitialAd() {
+    return InterstitialAd(
+      adUnitId: InterstitialAd.testAdUnitId,
+      targetingInfo: Utility.targetingInfo,
+      listener: (MobileAdEvent event) {
+        print("InterstitialAd event $event");
+      },
+    );
+  }
+
+  static loadRewardedVideoAds(){
+    RewardedVideoAd.instance.load(
+        adUnitId: "ca-app-pub-7524933595530752~9345165848",
+        targetingInfo: targetingInfo);
+  }
+
 }
+

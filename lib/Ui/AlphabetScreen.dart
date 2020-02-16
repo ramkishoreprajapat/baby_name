@@ -80,6 +80,7 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
                               genderType: widget.genderType,
                               categoryType: widget.categoryType,
                               characterType: mList[i].text,
+                              isFav: false,
                             ),
                           ),
                         );
