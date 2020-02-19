@@ -1,8 +1,11 @@
 import 'package:baby_name/Constants/AppColors.dart';
+import 'package:baby_name/Constants/AppConstant.dart';
 import 'package:baby_name/Constants/AppFonts.dart';
 import 'package:baby_name/Constants/AppStrings.dart';
 import 'package:baby_name/Model/BabyNameModel.dart';
 import 'package:baby_name/Utils/DatabaseHelper.dart';
+import 'package:baby_name/Utils/Utility.dart';
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:share/share.dart';
@@ -26,6 +29,7 @@ class NameListScreen extends StatefulWidget {
 }
 
 class _NameListScreenState extends State<NameListScreen> {
+  InterstitialAd _interstitialAd;
   // reference to our single class that manages the database
   final dbHelper = DatabaseHelper.instance;
 
@@ -105,7 +109,8 @@ class _NameListScreenState extends State<NameListScreen> {
       items.addAll(duplicateItems);
     });*/
     super.initState();
-
+    _interstitialAd?.dispose();
+    _interstitialAd = Utility.createInterstitialAd(AppConstant.DASHBOARD_REWARD_UNIT_AD_ID)..load();
     // _insert();
   }
 
@@ -238,6 +243,8 @@ class _NameListScreenState extends State<NameListScreen> {
                                       GestureDetector(
                                         onTap: () {
                                           speak(items[index].babyname);
+                                          _interstitialAd?.show();
+                                          _interstitialAd = Utility.createInterstitialAd(AppConstant.DASHBOARD_REWARD_UNIT_AD_ID)..load();
                                         },
                                         child: Icon(
                                           Icons.volume_up,
@@ -308,6 +315,9 @@ class _NameListScreenState extends State<NameListScreen> {
                                               items[index].meaning;
 
                                           Share.share(str);
+
+                                          _interstitialAd?.show();
+                                          _interstitialAd = Utility.createInterstitialAd(AppConstant.DASHBOARD_REWARD_UNIT_AD_ID)..load();
                                         },
                                         child: Icon(
                                           Icons.share,
@@ -363,4 +373,12 @@ class _NameListScreenState extends State<NameListScreen> {
   speak(text) async {
     Tts.speak(text);
   }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _interstitialAd?.dispose();
+  }
+
 }

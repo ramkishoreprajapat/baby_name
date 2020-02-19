@@ -1,3 +1,4 @@
+import 'package:baby_name/Constants/AppConstant.dart';
 import 'package:baby_name/Model/AlphabetModel.dart';
 import 'package:baby_name/main.dart';
 import 'package:firebase_admob/firebase_admob.dart';
@@ -48,7 +49,7 @@ class Utility{
 
  static BannerAd createBannerAd() {
     return BannerAd(
-      adUnitId: BannerAd.testAdUnitId,
+      adUnitId: AppConstant.BANNER_UNIT_AD_ID,
       size: AdSize.banner,
       targetingInfo: Utility.targetingInfo,
       listener: (MobileAdEvent event) {
@@ -58,9 +59,9 @@ class Utility{
   }
 
 
-  static InterstitialAd createInterstitialAd() {
+  static InterstitialAd createInterstitialAd(String unitAdId) {
     return InterstitialAd(
-      adUnitId: InterstitialAd.testAdUnitId,
+      adUnitId: unitAdId,
       targetingInfo: Utility.targetingInfo,
       listener: (MobileAdEvent event) {
         print("InterstitialAd event $event");
@@ -68,9 +69,11 @@ class Utility{
     );
   }
 
-  static loadRewardedVideoAds(){
+
+
+  static loadRewardedVideoAds(String unitAdId){
     RewardedVideoAd.instance.load(
-        adUnitId: "ca-app-pub-7524933595530752~9345165848",
+        adUnitId: unitAdId,
         targetingInfo: targetingInfo);
   }
 

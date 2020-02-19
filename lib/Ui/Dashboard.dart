@@ -18,7 +18,7 @@ class _DashboardState extends State<Dashboard>
     with SingleTickerProviderStateMixin {
   AnimationController _animationController;
   Animation<double> _animation;
-  int _coins = 0;
+  InterstitialAd _interstitialAd;
 
   void setUpAnimationIcon() {
     _animationController = new AnimationController(
@@ -43,17 +43,8 @@ class _DashboardState extends State<Dashboard>
 
     setUpAnimationIcon();
 
-    RewardedVideoAd.instance.listener =
-        (RewardedVideoAdEvent event, {String rewardType, int rewardAmount}) {
-      print("RewardedVideoAd event $event");
-      if (event == RewardedVideoAdEvent.rewarded) {
-        setState(() {
-          _coins += rewardAmount;
-        });
-      }
-
-      Utility.loadRewardedVideoAds();
-    };
+    _interstitialAd?.dispose();
+    _interstitialAd = Utility.createInterstitialAd(AppConstant.DASHBOARD_REWARD_UNIT_AD_ID)..load();
   }
 
   @override
@@ -72,8 +63,10 @@ class _DashboardState extends State<Dashboard>
               children: <Widget>[
                 GestureDetector(
                   onTap: () {
-                    RewardedVideoAd.instance.show();
 
+
+                    _interstitialAd?.show();
+                    _interstitialAd = Utility.createInterstitialAd(AppConstant.DASHBOARD_REWARD_UNIT_AD_ID)..load();
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -105,6 +98,9 @@ class _DashboardState extends State<Dashboard>
                 ),
                 GestureDetector(
                   onTap: () {
+
+                    _interstitialAd?.show();
+                    _interstitialAd = Utility.createInterstitialAd(AppConstant.DASHBOARD_REWARD_UNIT_AD_ID)..load();
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -140,7 +136,8 @@ class _DashboardState extends State<Dashboard>
             ),
             GestureDetector(
                 onTap: () {
-                 /* Utility.showVideoAdd();*/
+                  _interstitialAd?.show();
+                  _interstitialAd = Utility.createInterstitialAd(AppConstant.DASHBOARD_REWARD_UNIT_AD_ID)..load();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -162,5 +159,12 @@ class _DashboardState extends State<Dashboard>
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _interstitialAd?.dispose();
   }
 }

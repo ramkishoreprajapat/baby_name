@@ -3,6 +3,8 @@ import 'package:baby_name/Constants/AppConstant.dart';
 import 'package:baby_name/Constants/AppFonts.dart';
 import 'package:baby_name/Constants/AppStrings.dart';
 import 'package:baby_name/Ui/AlphabetScreen.dart';
+import 'package:baby_name/Utils/Utility.dart';
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -14,13 +16,15 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
+  InterstitialAd _interstitialAd;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
     SystemChrome.setEnabledSystemUIOverlays([]);
-
+    _interstitialAd?.dispose();
+    _interstitialAd = Utility.createInterstitialAd(AppConstant.DASHBOARD_REWARD_UNIT_AD_ID)..load();
   }
   @override
   Widget build(BuildContext context) {
@@ -53,6 +57,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
+                        _interstitialAd?.show();
+                        _interstitialAd = Utility.createInterstitialAd(AppConstant.DASHBOARD_REWARD_UNIT_AD_ID)..load();
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -89,6 +95,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
+                        _interstitialAd?.show();
+                        _interstitialAd = Utility.createInterstitialAd(AppConstant.DASHBOARD_REWARD_UNIT_AD_ID)..load();
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -132,6 +140,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
+                        _interstitialAd?.show();
+                        _interstitialAd = Utility.createInterstitialAd(AppConstant.DASHBOARD_REWARD_UNIT_AD_ID)..load();
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -168,6 +178,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
+                        _interstitialAd?.show();
+                        _interstitialAd = Utility.createInterstitialAd(AppConstant.DASHBOARD_REWARD_UNIT_AD_ID)..load();
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -208,5 +220,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _interstitialAd?.dispose();
   }
 }

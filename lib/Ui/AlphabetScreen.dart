@@ -1,9 +1,11 @@
 import 'package:baby_name/Constants/AppColors.dart';
+import 'package:baby_name/Constants/AppConstant.dart';
 import 'package:baby_name/Constants/AppFonts.dart';
 import 'package:baby_name/Constants/AppStrings.dart';
 import 'package:baby_name/Model/AlphabetModel.dart';
 import 'package:baby_name/Ui/NameListScreen.dart';
 import 'package:baby_name/Utils/Utility.dart';
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -17,7 +19,7 @@ class AlphabetScreen extends StatefulWidget {
 
 class _AlphabetScreenState extends State<AlphabetScreen> {
   List<AlphabetModel> mList;
-
+  InterstitialAd _interstitialAd;
   @override
   void initState() {
     // TODO: implement initState
@@ -26,6 +28,8 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
     SystemChrome.setEnabledSystemUIOverlays([]);
 
     mList = Utility.getAlphabets();
+    _interstitialAd?.dispose();
+    _interstitialAd = Utility.createInterstitialAd(AppConstant.DASHBOARD_REWARD_UNIT_AD_ID)..load();
   }
 
   @override
@@ -73,6 +77,8 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
                           borderRadius: new BorderRadius.circular(10)),
                       padding: EdgeInsets.all(8.0),
                       onPressed: () {
+                        _interstitialAd?.show();
+                        _interstitialAd = Utility.createInterstitialAd(AppConstant.DASHBOARD_REWARD_UNIT_AD_ID)..load();
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -101,5 +107,12 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _interstitialAd?.dispose();
   }
 }

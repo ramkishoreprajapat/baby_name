@@ -1,3 +1,4 @@
+import 'package:baby_name/Constants/AppConstant.dart';
 import 'package:baby_name/Ui/AlphabetScreen.dart';
 import 'package:baby_name/Ui/CategoryScreen.dart';
 import 'package:baby_name/Ui/Dashboard.dart';
@@ -23,7 +24,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    FirebaseAdMob.instance.initialize(appId: AppConstant.AD_MOB_APP_ID);
     _bannerAd = Utility.createBannerAd()..load();
 
   }
