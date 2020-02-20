@@ -79,10 +79,22 @@ class _DashboardState extends State<Dashboard>
                   child: new Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      new Image.asset(
-                        "assets/images/baby_boy.png",
-                        width: _animation.value * 140,
-                        height: _animation.value * 140,
+                      Container(
+                        decoration: new BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.white,
+                              blurRadius: 90.0, // has the effect of softening the shadow
+                              spreadRadius: 0, // has the effect of extending the shadow
+
+                            )
+                          ],
+                        ),
+                        child: new Image.asset(
+                          "assets/images/baby_boy.png",
+                          width: _animation.value * 140,
+                          height: _animation.value * 140,
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -113,10 +125,22 @@ class _DashboardState extends State<Dashboard>
                   child: new Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      new Image.asset(
-                        "assets/images/baby_girl.png",
-                        width: _animation.value * 140,
-                        height: _animation.value * 140,
+                      Container(
+                        decoration: new BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.white,
+                              blurRadius: 90.0, // has the effect of softening the shadow
+                              spreadRadius: 0, // has the effect of extending the shadow
+
+                            )
+                          ],
+                        ),
+                        child: new Image.asset(
+                          "assets/images/baby_girl.png",
+                          width: _animation.value * 140,
+                          height: _animation.value * 140,
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -150,10 +174,22 @@ class _DashboardState extends State<Dashboard>
                     ),
                   );
                 },
-                child: new Image.asset(
-                  'assets/images/heart.png',
-                  height: 80,
-                  width: 80,
+                child: Container(
+                  decoration: new BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.blueGrey,
+                        blurRadius: 90.0, // has the effect of softening the shadow
+                        spreadRadius: 0, // has the effect of extending the shadow
+
+                      )
+                    ],
+                  ),
+                  child: new Image.asset(
+                    'assets/images/heart.png',
+                    height: 80,
+                    width: 80,
+                  ),
                 ))
           ],
         ),

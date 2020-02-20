@@ -76,6 +76,6 @@ class Utility{
         adUnitId: unitAdId,
         targetingInfo: targetingInfo);
   }
-
+  
 }
 
