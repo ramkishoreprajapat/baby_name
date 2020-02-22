@@ -132,7 +132,7 @@ class _NameListScreenState extends State<NameListScreen> {
                 Visibility(
                   visible: !widget.isFav,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(16.0, 20.0, 16.0, 4.0),
+                    padding: const EdgeInsets.fromLTRB(16.0, 30.0, 16.0, 4.0),
                     child: Theme(
                       data: new ThemeData(
                           primaryColor: AppColors.colorOrange,

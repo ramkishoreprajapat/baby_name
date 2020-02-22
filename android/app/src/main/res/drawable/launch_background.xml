@@ -7,6 +7,6 @@
      <item>
         <bitmap
             android:gravity="center"
-            android:src="@mipmap/baby_bg" />
+            android:src="@drawable/baby_bg" />
     </item>
 </layer-list>
