@@ -40,13 +40,13 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/baby_bg.png"), fit: BoxFit.fill),
+              image: AssetImage("assets/images/baby_bg.jpg"), fit: BoxFit.fill),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.fromLTRB(16.0, 32.0, 16.0, 16.0),
               child: new Text(
                 AppStrings.select_baby_name_by_letter,
                 style: TextStyle(

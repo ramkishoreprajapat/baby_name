@@ -8,6 +8,7 @@ import 'package:baby_name/Utils/Utility.dart';
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:share/share.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -53,7 +54,7 @@ class _DashboardState extends State<Dashboard>
       child: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/images/baby_bg.png"),
+                image: AssetImage("assets/images/baby_bg.jpg"),
                 fit: BoxFit.fill)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -187,6 +188,30 @@ class _DashboardState extends State<Dashboard>
                   ),
                   child: new Image.asset(
                     'assets/images/heart.png',
+                    height: 80,
+                    width: 80,
+                  ),
+                )),
+            GestureDetector(
+                onTap: () {
+                  _interstitialAd?.show();
+                  _interstitialAd = Utility.createInterstitialAd(AppConstant.DASHBOARD_REWARD_UNIT_AD_ID)..load();
+                  Share.share(AppConstant.PLAYSTORE_PATH);
+                },
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 16.0),
+                  decoration: new BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.blueGrey,
+                        blurRadius: 90.0, // has the effect of softening the shadow
+                        spreadRadius: 0, // has the effect of extending the shadow
+
+                      )
+                    ],
+                  ),
+                  child: new Image.asset(
+                    'assets/images/share.png',
                     height: 80,
                     width: 80,
                   ),

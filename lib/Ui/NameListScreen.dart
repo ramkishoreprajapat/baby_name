@@ -123,7 +123,7 @@ class _NameListScreenState extends State<NameListScreen> {
       child: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/images/baby_bg.png"),
+                image: AssetImage("assets/images/baby_bg.jpg"),
                 fit: BoxFit.fill)),
         child: Stack(
           children: [

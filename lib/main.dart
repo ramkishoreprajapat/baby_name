@@ -1,4 +1,5 @@
 import 'package:baby_name/Constants/AppConstant.dart';
+import 'package:baby_name/Constants/AppStrings.dart';
 import 'package:baby_name/Ui/AlphabetScreen.dart';
 import 'package:baby_name/Ui/CategoryScreen.dart';
 import 'package:baby_name/Ui/Dashboard.dart';
@@ -46,7 +47,7 @@ class _MyAppState extends State<MyApp> {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: AppStrings.app_name,
       theme: ThemeData(
         // This is the theme of your application.
         //

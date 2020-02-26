@@ -23,4 +23,6 @@ class AppConstant {
   static var NAME_REWARD_UNIT_AD_ID = "ca-app-pub-7524933595530752/2004203191";
   static var BANNER_UNIT_AD_ID = "ca-app-pub-7524933595530752/9703548059";
 
+  static var PLAYSTORE_PATH = "https://play.google.com/store/apps/details?id=rk.name.baby.baby_name&hl=en";
+
 }

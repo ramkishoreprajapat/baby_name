@@ -33,7 +33,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/baby_bg.png"), fit: BoxFit.fill),
+              image: AssetImage("assets/images/baby_bg.jpg"), fit: BoxFit.fill),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
